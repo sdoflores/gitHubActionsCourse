@@ -1,0 +1,17 @@
+name: Aprendiendo GitHub Actions
+run-name: ¡Estoy aprendiendo GitHub Actions!
+on: [push]
+jobs: 
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependency
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - name: Definir variable
+        run: echo "USERNAME = ${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script  
+        run: java Hola_Mundo.java
